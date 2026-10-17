@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+**/build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android
+local.properties
+*.apk
+*.aab
+*.ap_
+*.dex
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Kotlin
+.kotlin/
+
+# IDE
+.idea/
+*.iml
+*.hprof
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model uji yang mungkin besar dan berhak cipta; jangan ikut ke git.
+# Taruh manual di app/src/main/assets bila ingin dipakai untuk smoke test.
+*.glb
+!core/gltf/src/test/resources/**/*.glb

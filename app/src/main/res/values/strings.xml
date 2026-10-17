@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Anima3D</string>
+    <string name="open_model">Buka model .glb</string>
+    <string name="loading">Membaca berkas…</string>
+</resources>
