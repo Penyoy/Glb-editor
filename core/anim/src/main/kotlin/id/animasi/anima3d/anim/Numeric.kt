@@ -125,11 +125,20 @@ object Numeric {
         out: FloatArray, outOffset: Int
     ) {
         quaternionToMatrix(rotation, rOffset, out, outOffset)
-        val sx = scale[sOffset]; val sy = scale[sOffset + 1]; val sz = scale[sOffset + 2]
+
+        // M = T * R * S. Karena matriks kolom-mayor, kolom ke-c dari R harus
+        // dikalikan dengan satu skalar scale[c] — bukan dikalikan komponen demi
+        // komponen, yang akan menghasilkan shear.
         for (col in 0 until 3) {
-            out[outOffset + col * 4] *= sx
-            out[outOffset + col * 4 + 1] *= sy
-            out[outOffset + col * 4 + 2] *= sz
+            val s = when (col) {
+                0 -> scale[sOffset]
+                1 -> scale[sOffset + 1]
+                else -> scale[sOffset + 2]
+            }
+            val base = outOffset + col * 4
+            out[base] *= s
+            out[base + 1] *= s
+            out[base + 2] *= s
         }
         out[outOffset + 12] = translation[tOffset]
         out[outOffset + 13] = translation[tOffset + 1]

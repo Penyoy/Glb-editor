@@ -43,7 +43,7 @@ class ModelSession(
         lines += "Klip animasi: ${clips.size}"
 
         if (document.root.extensionsRequired?.isNotEmpty() == true) {
-            lines += "Ekstensi wajib: ${document.root.extensionsRequired!!.joinToString(", ")}"
+            lines += "Ekstensi wajib: ${document.root.extensionsRequired.joinToString(", ")}"
         }
         if (skeleton.matrixNodes.isNotEmpty()) {
             lines += "Node berbentuk matriks: ${skeleton.matrixNodes.size}"
