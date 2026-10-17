@@ -32,8 +32,10 @@ jobs:
           distribution: temurin
           java-version: '17'
 
+      # v4 diperlukan: v3 masih menjalankan "sdkmanager tools", dan paket lama
+      # "tools" itu sudah tidak ada lagi di repositori SDK.
       - name: Siapkan Android SDK
-        uses: android-actions/setup-android@v3
+        uses: android-actions/setup-android@v4
 
       # Android 17 memakai penomoran versi minor: paket platformnya bernama
       # "android-37.0", bukan "android-37". Nama itulah yang dicari AGP saat
