@@ -26,6 +26,10 @@ object TestGlb {
         return bytes
     }
 
+    // Di JVM, vararg Float tersusun sebagai float[], sehingga tanpa @JvmName
+    // kedua fungsi ini punya tanda tangan yang sama dan saling bertabrakan.
+    // Nama JVM-nya dibedakan; pemanggilan dari Kotlin tetap floatBytes(1f, 2f).
+    @JvmName("floatBytesOf")
     fun floatBytes(vararg values: Float): ByteArray = floatBytes(values.copyOf())
 }
 
