@@ -200,8 +200,11 @@ class ClipConverterTest {
 
         val result = ClipConverter.convert(GltfDocument.parse(TestGlb.buildGlb(root, builder.bytes())))
         assertTrue(result.clips.isEmpty())
-        assertEquals(1, result.warnings.size)
+        // Dua catatan: alasan channel itu dilewati, lalu ringkasan bahwa klipnya
+        // jadi kosong dan ikut dibuang.
+        assertEquals(2, result.warnings.size, "peringatan: ${result.warnings}")
         assertTrue(result.warnings[0].contains("tidak menaik"), "peringatan: ${result.warnings[0]}")
+        assertTrue(result.warnings[1].contains("Rusak"), "peringatan: ${result.warnings[1]}")
     }
 
     @Test

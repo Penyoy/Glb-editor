@@ -30,7 +30,12 @@ class GltfDocumentTest {
         assertEquals(-1, doc.parent[Fixtures.NODE_MESH])
 
         assertTrue(doc.childIndices(Fixtures.NODE_HIP).contentEquals(intArrayOf(Fixtures.NODE_KNEE)))
-        assertTrue(doc.rootNodes().contentEquals(intArrayOf(Fixtures.NODE_ROOT)))
+        // Dua akar: Root lewat hierarki, dan Body yang berdiri sendiri.
+        assertTrue(
+            doc.rootNodes().contentEquals(intArrayOf(Fixtures.NODE_ROOT, Fixtures.NODE_MESH)),
+            "akar: ${doc.rootNodes().toList()}"
+        )
+        // Scene hanya menyebut Root, jadi Body tidak ikut ke dalam scene.
         assertTrue(doc.sceneRootNodes().contentEquals(intArrayOf(Fixtures.NODE_ROOT)))
     }
 
